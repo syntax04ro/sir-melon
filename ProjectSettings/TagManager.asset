@@ -6,6 +6,7 @@ TagManager:
   tags:
   - tanganZombie
   - Zombie
+  - WayPoints
   layers:
   - Default
   - TransparentFX

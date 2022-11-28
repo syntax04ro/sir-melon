@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     public Transform cam;
 
     //health
-    public float healthPlayer = 100f;
+    public static float healthPlayer = 100f;
     private float persenHp;
 
     

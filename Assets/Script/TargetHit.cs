@@ -5,8 +5,8 @@ using UnityEngine;
 public class TargetHit : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float targetHealth = 30f;
-
+    public float targetHealth = 300f;
+    public Animator Anim;
     public void TakeDamage(float amount)
     {
         targetHealth -= amount;
@@ -14,12 +14,14 @@ public class TargetHit : MonoBehaviour
         // Debug.Log("Target Health: " + targetHealth);
         if (targetHealth <= 0f)
         {
+            Anim.SetTrigger("isDie");
+            GetComponent<Collider>().enabled = false;
             Die();
         }
     }
 
     void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject,10);
     }
 }
