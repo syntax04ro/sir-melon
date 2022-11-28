@@ -8,7 +8,14 @@ public class ShootRiffle : MonoBehaviour
     public float damage = 10f;
     public float range = 5f;
     public Animator Anim;
+    public GameObject swordInPinggang; 
+    public GameObject swordInTangan;
     public GameObject effectPunch;
+
+    bool isTakeSword = true;
+    bool isSaveSword = false;
+
+    public ObjectPickUp objectPickUp;
     // Start is called before the first frame update
 
 
@@ -22,7 +29,7 @@ public class ShootRiffle : MonoBehaviour
         Vector3 direction = new Vector3(h, 0f, v).normalized;
 
         float data = Anim.GetFloat("speed");
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1") && isSaveSword == true)
         {
             Shoot();
             Anim.SetBool("isPunch", true);
@@ -39,12 +46,12 @@ public class ShootRiffle : MonoBehaviour
 
         
         }
-        else if (Input.GetButton("Fire1") && data == 0.1)
+        else if (Input.GetButtonDown("Fire1") && data == 0.1 && isSaveSword == true)
         {
             Shoot();
             Anim.SetBool("isPunch", true);
         }
-        else if (Input.GetButton("Fire1") && Input.GetButton("Fire2"))
+        else if (Input.GetButtonDown("Fire1") && Input.GetButtonDown("Fire2") && isSaveSword == true)
         {
             Shoot();
             Anim.SetBool("isPunch", true);
@@ -53,6 +60,27 @@ public class ShootRiffle : MonoBehaviour
         {
             Anim.SetBool("isPunch", false);
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1) && isTakeSword == true && objectPickUp.isPickedUp == true)
+        {
+            Anim.SetBool("isTakeSword", true);
+            swordInPinggang.SetActive(false);
+            swordInTangan.SetActive(true);
+            isTakeSword = false;
+            isSaveSword = true;
+            
+        }
+        if(Input.GetKeyUp(KeyCode.Alpha1)) Anim.SetBool("isTakeSword", false);
+        if(Input.GetKeyDown(KeyCode.Alpha2) && isSaveSword == true  && objectPickUp.isPickedUp == true)
+        {
+            Anim.SetBool("isSaveSword", true);
+            swordInPinggang.SetActive(true);
+            swordInTangan.SetActive(false);
+            isSaveSword = false;
+            isTakeSword = true;
+        }
+        // Debug.Log(objectPickUp.isPickedUp);
+        if(Input.GetKeyUp(KeyCode.Alpha2)) Anim.SetBool("isSaveSword", false);
     }
 
     private void Shoot()
@@ -74,5 +102,9 @@ public class ShootRiffle : MonoBehaviour
                 Destroy(targetObject, 1f);
             }
         }
+    }
+
+    private void Start() {
+
     }
 }

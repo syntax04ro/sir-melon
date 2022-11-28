@@ -9,9 +9,9 @@ public class SwitchScene : MonoBehaviour
     public GameObject noteUi;
     public GameObject loadingScreen;
     public Text textProgress;
-    
+
     public Slider slider;
-    public PickupItem pickup;
+    public ObjectPickUp objectPickUp;
 
     bool isArea = false;
     // Update is called once per frame
@@ -26,9 +26,12 @@ public class SwitchScene : MonoBehaviour
         {
             if (isArea == true)
             {
-                if(pickup.isPickup == true){
+                if (objectPickUp.isPickedUp == true)
+                {
                     LoadScene(1);
-                }else{
+                }
+                else
+                {
                     return;
                 }
             }

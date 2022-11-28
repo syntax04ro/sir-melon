@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackScript : StateMachineBehaviour
 {
+  public float damageZombie = 20f;
+
     Transform player;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -15,11 +17,16 @@ public class AttackScript : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.transform.LookAt(player);
+        
        float distance = Vector3.Distance(player.position, animator.transform.position);
        if(distance > 3.5f){
          animator.SetBool("isAttack",false);
+       }else if(distance < 3.4f){
+       
+        PlayerScript.playerScript.playerTakeDamage(damageZombie);
        }
     }
+    
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

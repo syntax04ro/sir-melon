@@ -15,10 +15,11 @@ public class PlayerScript : MonoBehaviour
     public Transform cam;
 
     //health
-    public static float healthPlayer = 100f;
+    public float healthPlayer = 100f;
     private float persenHp;
 
-    
+    public static PlayerScript playerScript;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -28,6 +29,7 @@ public class PlayerScript : MonoBehaviour
     {
         controller = new PlayerController();
         controller.Enable();
+        playerScript = this;
 
     }
 
@@ -51,37 +53,39 @@ public class PlayerScript : MonoBehaviour
         {
             float tragetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, tragetAngle, ref turnSmoothVelocity, turnSmoothTime);
-             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            if(Input.GetKey(KeyCode.LeftShift)) isWalking = false;
-            turnSpeed = isWalking ? 0.1f : 1f; 
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            if (Input.GetKey(KeyCode.LeftShift)) isWalking = false;
+            turnSpeed = isWalking ? 0.1f : 1f;
 
             Vector3 moveDirection = Quaternion.Euler(0f, tragetAngle, 0f) * Vector3.forward * turnSpeed;
             Anim.SetFloat("speed", turnSpeed);
-            
+
 
             Vector3 data = rb.velocity = moveDirection.normalized * movementSpeed * Time.deltaTime;
             rb.AddForce(data, ForceMode.VelocityChange);
         }
-        else{
+        else
+        {
             Anim.SetFloat("speed", direction.magnitude);
-      
+
         }
     }
 
     //take Damage
 
-    void playerTakeDamage(float damage)
+    public void playerTakeDamage(float damage)
     {
         healthPlayer -= damage;
 
         persenHp = healthPlayer * 100f;
-        if(healthPlayer <= 0)
+        if (healthPlayer <= 0)
         {
             Die();
+            //Open Die Menus
         }
     }
 
-    void Die()
+    public void Die()
     {
         Destroy(gameObject, 3);
     }
