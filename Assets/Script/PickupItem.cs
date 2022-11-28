@@ -11,8 +11,9 @@ public class PickupItem : MonoBehaviour
 
     public PlayerScript player;
     private float radiusItem = 2.5f;
-    public bool isPickup = false;
     // Start is called before the first frame update
+
+    public ObjectPickUp objectPickUp;
     private void Awake()
     {
         tasbih.SetActive(false);
@@ -31,7 +32,8 @@ public class PickupItem : MonoBehaviour
            
             if (Input.GetKeyDown("f"))
             {
-                isPickup = true;
+                
+                objectPickUp.isPickedUp = true;
                 tasbih.SetActive(true);
                 magicItem.SetActive(false);
                 text3d.SetActive(false);
