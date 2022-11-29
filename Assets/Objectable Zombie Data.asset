@@ -16,4 +16,4 @@ MonoBehaviour:
   isScene1: 0
   isScene2: 0
   isScene3: 1
-  Zombie: 0
+  Zombie: 10

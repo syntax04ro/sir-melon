@@ -42,9 +42,29 @@ ModelImporter:
   - first:
       74: 8349542763059015795
     second: Armature|Walk
-  externalObjects: {}
+  - first:
+      74: -6659928155627309289
+    second: WalkBaru
+  - first:
+      74: 783600440013066124
+    second: Armature.001|WalkBaru
+  - first:
+      74: 4699274299699868179
+    second: Armature.001|Idle
+  - first:
+      74: -3077344318920414312
+    second: Armature.001|Die
+  - first:
+      74: -5590930537672954133
+    second: Armature.001|Damaged
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 16e5421131f4e524197205caa8c22cd2, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 1
     materialSearch: 0
     materialLocation: 1
@@ -71,11 +91,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk
-      takeName: Walk
+      name: Armature.001|WalkBaru
+      takeName: Armature.001|WalkBaru
       internalID: 0
       firstFrame: 0
-      lastFrame: 240
+      lastFrame: 161
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -100,8 +120,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
-      takeName: Idle
+      name: Armature.001|Idle
+      takeName: Armature.001|Idle
       internalID: 0
       firstFrame: 0
       lastFrame: 240
@@ -140,7 +160,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -158,11 +178,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Die
-      takeName: Die
+      name: Armature.001|Die
+      takeName: Armature.001|Die
       internalID: 0
       firstFrame: 0
-      lastFrame: 240
+      lastFrame: 138
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -187,11 +207,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Damaged
-      takeName: Damaged
+      name: Armature.001|Damaged
+      takeName: Armature.001|Damaged
       internalID: 0
       firstFrame: 0
-      lastFrame: 240
+      lastFrame: 65
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
