@@ -6,7 +6,10 @@ public class TargetHit : MonoBehaviour
 {
     // Start is called before the first frame update
     public float targetHealth = 300f;
+
+    public bool isKillZombie = false;
     public Animator Anim;
+    public ObjectableZombie objectableZombie;
     public void TakeDamage(float amount)
     {
         targetHealth -= amount;
@@ -22,6 +25,7 @@ public class TargetHit : MonoBehaviour
 
     void Die()
     {
+        objectableZombie.isKillZombie = true;
         Destroy(gameObject,10);
     }
 }

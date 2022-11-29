@@ -79,7 +79,7 @@ public class ShootRiffle : MonoBehaviour
             isSaveSword = false;
             isTakeSword = true;
         }
-        // Debug.Log(objectPickUp.isPickedUp);
+        // Debug.Log("isPick up" + objectPickUp.isPickedUp);
         if(Input.GetKeyUp(KeyCode.Alpha2)) Anim.SetBool("isSaveSword", false);
     }
 

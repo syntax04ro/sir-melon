@@ -13,7 +13,11 @@ public class SwitchScene : MonoBehaviour
     public Slider slider;
     public ObjectPickUp objectPickUp;
 
+    public ObjectableZombie objectableZombie;
+
     bool isArea = false;
+
+   
     // Update is called once per frame
     void Start()
     {
@@ -26,13 +30,20 @@ public class SwitchScene : MonoBehaviour
         {
             if (isArea == true)
             {
+                
                 if (objectPickUp.isPickedUp == true)
                 {
                     LoadScene(1);
-                }
-                else
-                {
+                    objectableZombie.isScene1 = false;
+                    objectableZombie.isScene2 = true;
+                }else{
                     return;
+                }
+                if(objectableZombie.isKillZombie == true && objectableZombie.isScene2 == true){
+                    LoadScene(2);
+                    objectableZombie.isScene2 = false;
+                    objectableZombie.isScene3 = true;
+
                 }
             }
         }
@@ -44,6 +55,7 @@ public class SwitchScene : MonoBehaviour
         {
             isArea = true;
             noteUi.SetActive(true);
+            
         }
     }
 

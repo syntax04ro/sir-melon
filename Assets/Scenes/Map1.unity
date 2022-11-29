@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297410672}
   m_LocalRotation: {x: 0.0020943934, y: 0, z: 0, w: 0.9999978}
-  m_LocalPosition: {x: -0.6981696, y: 2.31766, z: -4.9951134}
+  m_LocalPosition: {x: -1.2467608, y: 2.31766, z: -4.9951134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 466429813}
@@ -4294,6 +4294,8 @@ MonoBehaviour:
   isWalking: 0
   rb: {fileID: 601990644}
   cam: {fileID: 1593307574}
+  healthBar: {fileID: 0}
+  healthPlayer: 1000
 --- !u!65 &601990643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7440,7 +7442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593307570}
   m_LocalRotation: {x: 0.0020943934, y: 0, z: 0, w: 0.9999978}
-  m_LocalPosition: {x: -0.6981696, y: 2.31766, z: -4.9951134}
+  m_LocalPosition: {x: -1.2467608, y: 2.31766, z: -4.9951134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9116,6 +9118,7 @@ MonoBehaviour:
   textProgress: {fileID: 1083489777}
   slider: {fileID: 428588358}
   objectPickUp: {fileID: 11400000, guid: 0773b76f45818eeae9116aeb298d2991, type: 2}
+  objectableZombie: {fileID: 11400000, guid: 8e4d1c5582a7e1c4d911e3161e7a7313, type: 2}
 --- !u!65 &2001637508
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -14,8 +14,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] Rigidbody rb;
     public Transform cam;
 
+    public HealthBar healthBar;
+
     //health
-    public float healthPlayer = 100f;
+    public float healthPlayer = 1000f;
     private float persenHp;
 
     public static PlayerScript playerScript;
@@ -23,6 +25,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        healthBar.MaxHealth(healthPlayer);
+        // Debug.Log("start " + healthPlayer);
     }
 
     void Awake()
@@ -77,16 +81,19 @@ public class PlayerScript : MonoBehaviour
     {
         healthPlayer -= damage;
 
-        persenHp = healthPlayer * 100f;
-        if (healthPlayer <= 0)
+        healthBar.setHealth(healthPlayer);
+
+        if (healthPlayer == 0)
         {
             Die();
             //Open Die Menus
         }
+        // Debug.Log("setelah" + healthPlayer);
     }
 
     public void Die()
     {
+        Time.timeScale = 0;
         Destroy(gameObject, 3);
     }
 
