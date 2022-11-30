@@ -8,6 +8,8 @@ TagManager:
   - Zombie
   - WayPoints
   - SpawnPoints
+  - melon
+  - Boss
   layers:
   - Default
   - TransparentFX
