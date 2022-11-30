@@ -38,7 +38,7 @@ public class SwitchScene : MonoBehaviour
                     objectableZombie.isScene2 = true;
                 }
                 if(objectableZombie.Zombie == 0 && objectableZombie.isScene2 == true){
-                    LoadScene(2);
+                    LoadScene(3);
                     objectableZombie.isScene2 = false;
                     objectableZombie.isScene3 = true;
                 }
@@ -64,7 +64,7 @@ public class SwitchScene : MonoBehaviour
         {
             isArea = false;
             noteUi.SetActive(false);
-        }
+        } 
     }
 
     public void LoadScene(int loadIndex)
