@@ -6,11 +6,16 @@ public class ShootRiffle : MonoBehaviour
 {
     public Camera cam;
     public float damage = 10f;
-    public float range = 5f;
+    public float range = 4f;
     public Animator Anim;
-    public GameObject swordInPinggang; 
+    public GameObject swordInPinggang;
     public GameObject swordInTangan;
     public GameObject effectPunch;
+
+    public float maxDelay = 0.7f;
+    private float lasCLick = 0;
+    public float numClicks = 0;
+    private float nextTime = 0;
 
     bool isTakeSword = true;
     bool isSaveSword = false;
@@ -22,56 +27,66 @@ public class ShootRiffle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        Vector3 direction = new Vector3(h, 0f, v).normalized;
-
-        float data = Anim.GetFloat("speed");
-        if (Input.GetButtonDown("Fire1") && isSaveSword == true)
+        if (Time.time - lasCLick > maxDelay)
         {
-            Shoot();
-            Anim.SetBool("isPunch", true);
-
-            // float a = Time.time;
-            // if(a > nextToTime){
-            //     Anim.SetBool("isPunch2", true);
-            //     nextToTime += Time.time/5;  
-            // }else{
-            //     Anim.SetBool("isPunch2", false);
-            // }
-
-            // Debug.Log(Anim.GetBool("isPunch2") + " =  " + a + " data time " + nextToTime);
-
-        
+            numClicks = 0;
         }
-        else if (Input.GetButtonDown("Fire1") && data == 0.1 && isSaveSword == true)
+        if(numClicks == 0)
         {
-            Shoot();
-            Anim.SetBool("isPunch", true);
+            Anim.SetBool("isPunch", false);
+            Anim.SetBool("isPunch2", false);
         }
-        else if (Input.GetButtonDown("Fire1") && Input.GetButtonDown("Fire2") && isSaveSword == true)
+        if(numClicks >= 3)
         {
-            Shoot();
-            Anim.SetBool("isPunch", true);
+            numClicks = 0;
+            Anim.SetBool("isPunch", false);
+            Anim.SetBool("isPunch2", false);
         }
-        else
+        if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && Anim.GetCurrentAnimatorStateInfo(0).IsName("isPunch"))
         {
             Anim.SetBool("isPunch", false);
         }
+        if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && Anim.GetCurrentAnimatorStateInfo(0).IsName("isPunch2"))
+        {
+            Anim.SetBool("isPunch2", false);
+            numClicks = 0;
+        }
+        float data = Anim.GetFloat("speed");
+        if (Time.time > nextTime)
+        {
+            if (Input.GetButtonDown("Fire1") && isSaveSword == true)
+            {
+                getPunch();
+                Shoot();
 
-        if(Input.GetKeyDown(KeyCode.Alpha1) && isTakeSword == true && objectPickUp.isPickedUp == true)
+            }
+            else if (Input.GetButtonDown("Fire1") && data == 0.1 && isSaveSword == true)
+            {
+                getPunch();
+                Shoot();
+            }
+            else if (Input.GetButtonDown("Fire1") && Input.GetButtonDown("Fire2") && isSaveSword == true)
+            {
+                getPunch();
+                Shoot();
+            }
+            else
+            {
+                Anim.SetBool("isPunch", false);
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && isTakeSword == true && objectPickUp.isPickedUp == true)
         {
             Anim.SetBool("isTakeSword", true);
             swordInPinggang.SetActive(false);
             swordInTangan.SetActive(true);
             isTakeSword = false;
             isSaveSword = true;
-            
+
         }
-        if(Input.GetKeyUp(KeyCode.Alpha1)) Anim.SetBool("isTakeSword", false);
-        if(Input.GetKeyDown(KeyCode.Alpha2) && isSaveSword == true  && objectPickUp.isPickedUp == true)
+        if (Input.GetKeyUp(KeyCode.Alpha1)) Anim.SetBool("isTakeSword", false);
+        if (Input.GetKeyDown(KeyCode.Alpha2) && isSaveSword == true && objectPickUp.isPickedUp == true)
         {
             Anim.SetBool("isSaveSword", true);
             swordInPinggang.SetActive(true);
@@ -80,7 +95,7 @@ public class ShootRiffle : MonoBehaviour
             isTakeSword = true;
         }
         // Debug.Log("isPick up" + objectPickUp.isPickedUp);
-        if(Input.GetKeyUp(KeyCode.Alpha2)) Anim.SetBool("isSaveSword", false);
+        if (Input.GetKeyUp(KeyCode.Alpha2)) Anim.SetBool("isSaveSword", false);
     }
 
     private void Shoot()
@@ -104,7 +119,21 @@ public class ShootRiffle : MonoBehaviour
         }
     }
 
-    private void Start() {
+    public void getPunch()
+    {
+        lasCLick = Time.time;
+        numClicks++;
 
+        if (numClicks == 1)
+        {
+            Anim.SetBool("isPunch", true);
+        }
+        numClicks = Mathf.Clamp(numClicks, 0, 3);
+
+        if (numClicks == 2)
+        {
+            Anim.SetBool("isPunch", false);
+            Anim.SetBool("isPunch2", true);
+        }
     }
 }

@@ -11,6 +11,8 @@ public class ReadNotes : MonoBehaviour
     public GameObject noteUi;
 
     bool isRead = false;
+    public AudioSource src;
+    public AudioClip openBook;
 
     private void Update()
     {
@@ -22,6 +24,8 @@ public class ReadNotes : MonoBehaviour
                 noteUi.SetActive(false);
                 isRead = false;
                 _noteImage.enabled = true;
+                src.clip = openBook;
+                src.Play();
             }
         }
 

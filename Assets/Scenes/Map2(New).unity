@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.09005888, g: 0.07501922, b: 0.029901102, a: 1}
+  m_IndirectSpecularColor: {r: 0.0804657, g: 0.06802951, b: 0.02853058, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -317,6 +317,8 @@ MonoBehaviour:
   swordInPinggang: {fileID: 1550326747}
   swordInTangan: {fileID: 545815515}
   effectPunch: {fileID: 4900909840161643529, guid: db3ec066b2455883c9e49c9238861ada, type: 3}
+  maxDelay: 0.7
+  numClicks: 0
   objectPickUp: {fileID: 11400000, guid: 0773b76f45818eeae9116aeb298d2991, type: 2}
 --- !u!114 &85165656
 MonoBehaviour:
@@ -1754,7 +1756,6 @@ GameObject:
   - component: {fileID: 558015597}
   - component: {fileID: 558015596}
   - component: {fileID: 558015595}
-  - component: {fileID: 558015599}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -1834,28 +1835,11 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.42261827, z: 0, w: 0.9063079}
   m_LocalPosition: {x: -11.95, y: 7.1364, z: -21.49}
   m_LocalScale: {x: 4.506739, y: 6.9715123, z: 1.1775421}
-  m_Children: []
+  m_Children:
+  - {fileID: 644875299}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -50, z: 0}
---- !u!114 &558015599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558015594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a870472dcb4626ba6b48c3899fcd1021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noteUi: {fileID: 413808645}
-  loadingScreen: {fileID: 1405423894}
-  textProgress: {fileID: 1598384345}
-  slider: {fileID: 1241779983}
-  objectPickUp: {fileID: 11400000, guid: 0773b76f45818eeae9116aeb298d2991, type: 2}
-  objectableZombie: {fileID: 11400000, guid: 8e4d1c5582a7e1c4d911e3161e7a7313, type: 2}
 --- !u!1 &561683033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9066455708006686128, guid: 412556b54fe86916ebaef0bbc868fccb, type: 3}
@@ -2146,6 +2130,69 @@ Transform:
   m_Father: {fileID: 2082935320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &644875298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644875299}
+  - component: {fileID: 644875300}
+  - component: {fileID: 644875301}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &644875299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644875298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.003, y: -0.407, z: -0.02}
+  m_LocalScale: {x: 1, y: 0.33766, z: 3.8205}
+  m_Children: []
+  m_Father: {fileID: 558015598}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &644875300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644875298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &644875301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644875298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a870472dcb4626ba6b48c3899fcd1021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteUi: {fileID: 413808645}
+  loadingScreen: {fileID: 1405423894}
+  textProgress: {fileID: 1598384345}
+  slider: {fileID: 1241779983}
+  objectPickUp: {fileID: 11400000, guid: 0773b76f45818eeae9116aeb298d2991, type: 2}
+  objectableZombie: {fileID: 11400000, guid: 8e4d1c5582a7e1c4d911e3161e7a7313, type: 2}
 --- !u!1 &653326801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3099480073477063863, guid: 412556b54fe86916ebaef0bbc868fccb, type: 3}
@@ -2918,7 +2965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.0020943934, y: 0, z: 0, w: 0.9999978}
-  m_LocalPosition: {x: -1.515821, y: 5.2326603, z: 74.77117}
+  m_LocalPosition: {x: -1.4642835, y: 5.2326603, z: 74.77117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8862,7 +8909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6819943235039226578}
   m_LocalRotation: {x: 0.0020943934, y: 0, z: 0, w: 0.9999978}
-  m_LocalPosition: {x: -1.515821, y: 5.2326603, z: 74.77117}
+  m_LocalPosition: {x: -1.4642835, y: 5.2326603, z: 74.77117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6819943234825819000}

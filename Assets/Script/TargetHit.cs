@@ -25,5 +25,6 @@ public class TargetHit : MonoBehaviour
     {
         objectableZombie.isKillZombie = true;
         Destroy(gameObject,10);
+        objectableZombie.Zombie -= 1;
     }
 }

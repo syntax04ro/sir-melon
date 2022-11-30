@@ -31,22 +31,21 @@ public class SwitchScene : MonoBehaviour
             if (isArea == true)
             {
                 
-                if (objectPickUp.isPickedUp == true)
+                if (objectPickUp.isPickedUp == true && objectableZombie.isScene1 == true)
                 {
                     LoadScene(1);
                     objectableZombie.isScene1 = false;
                     objectableZombie.isScene2 = true;
-                }else{
-                    return;
                 }
-                if(objectableZombie.isKillZombie == true && objectableZombie.isScene2 == true){
+                if(objectableZombie.Zombie == 0 && objectableZombie.isScene2 == true){
                     LoadScene(2);
                     objectableZombie.isScene2 = false;
                     objectableZombie.isScene3 = true;
-
                 }
             }
+            
         }
+
     }
 
     private void OnTriggerEnter(Collider other)

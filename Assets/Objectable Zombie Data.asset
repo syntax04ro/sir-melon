@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isKillZombie: 1
   isScene1: 0
-  isScene2: 0
-  isScene3: 1
-  Zombie: 10
+  isScene2: 1
+  isScene3: 0
+  isScene4: 0
+  Zombie: 0

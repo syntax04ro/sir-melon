@@ -10,6 +10,7 @@ public class ObjectableZombie : ScriptableObject
     public bool isScene1;
     public bool isScene2;
     public bool isScene3;
+    public bool isScene4;
     public int Zombie;
 
 }
