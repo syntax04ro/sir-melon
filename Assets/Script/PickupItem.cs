@@ -26,13 +26,7 @@ public class PickupItem : MonoBehaviour
     private void Start()
     {
         text3d.SetActive(false);
-        objectPickUp.isPickedUp = false;
-        objectableZombie.isKillZombie = false;
-        objectableZombie.isScene1 = true;
-        objectableZombie.isScene2 = false;
-        objectableZombie.isScene3 = false;
-        objectableZombie.isScene4 = false;
-        objectableZombie.Zombie = 10;
+ 
     }
 
     // Update is called once per frame

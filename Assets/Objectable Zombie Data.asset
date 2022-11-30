@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881a4ce5ce2af9a2aaec3ce8410cdb2f, type: 3}
   m_Name: Objectable Zombie Data
   m_EditorClassIdentifier: 
-  isKillZombie: 1
-  isScene1: 0
+  isKillZombie: 0
+  isScene1: 1
   isScene2: 1
   isScene3: 0
   isScene4: 0
-  Zombie: 0
+  Zombie: 10

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class SwitchScene : MonoBehaviour
 {
     public GameObject noteUi;
@@ -33,12 +34,12 @@ public class SwitchScene : MonoBehaviour
                 
                 if (objectPickUp.isPickedUp == true && objectableZombie.isScene1 == true)
                 {
-                    LoadScene(1);
+                    SceneManager.LoadScene(2);
                     objectableZombie.isScene1 = false;
                     objectableZombie.isScene2 = true;
                 }
                 if(objectableZombie.Zombie == 0 && objectableZombie.isScene2 == true){
-                    LoadScene(3);
+                    LoadScene(4);
                     objectableZombie.isScene2 = false;
                     objectableZombie.isScene3 = true;
                 }
