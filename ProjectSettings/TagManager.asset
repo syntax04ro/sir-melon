@@ -10,6 +10,7 @@ TagManager:
   - SpawnPoints
   - melon
   - Boss
+  - Ground
   layers:
   - Default
   - TransparentFX

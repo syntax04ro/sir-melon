@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShootRiffle : MonoBehaviour
 {
     public Camera cam;
-    public float damage = 10f;
-    public float range = 4f;
+    public float damage = 50f;
+    public float range = 7f;
     public Animator Anim;
     public GameObject swordInPinggang;
     public GameObject swordInTangan;
