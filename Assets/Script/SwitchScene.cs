@@ -18,7 +18,7 @@ public class SwitchScene : MonoBehaviour
 
     bool isArea = false;
 
-   
+
     // Update is called once per frame
     void Start()
     {
@@ -31,20 +31,28 @@ public class SwitchScene : MonoBehaviour
         {
             if (isArea == true)
             {
-                
+
                 if (objectPickUp.isPickedUp == true && objectableZombie.isScene1 == true)
                 {
                     SceneManager.LoadScene(2);
                     objectableZombie.isScene1 = false;
                     objectableZombie.isScene2 = true;
                 }
-                if(objectableZombie.Zombie == 0 && objectableZombie.isScene2 == true){
+                if (objectableZombie.Zombie == 0 && objectableZombie.isScene2 == true)
+                {
                     LoadScene(4);
                     objectableZombie.isScene2 = false;
                     objectableZombie.isScene3 = true;
+                    objectableZombie.Zombie = 10;
+                }
+                if (objectableZombie.Zombie == 0 && objectableZombie.isScene3 == true)
+                {
+                    LoadScene(5);
+                    objectableZombie.isScene3 = false;
+                    objectableZombie.isScene4 = true;
                 }
             }
-            
+
         }
 
     }
@@ -55,7 +63,7 @@ public class SwitchScene : MonoBehaviour
         {
             isArea = true;
             noteUi.SetActive(true);
-            
+
         }
     }
 
@@ -65,7 +73,7 @@ public class SwitchScene : MonoBehaviour
         {
             isArea = false;
             noteUi.SetActive(false);
-        } 
+        }
     }
 
     public void LoadScene(int loadIndex)

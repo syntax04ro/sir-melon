@@ -45,6 +45,7 @@ public class mainmenu : MonoBehaviour
         objectableZombie.isScene3 = false;
         objectableZombie.isScene4 = false;
         objectableZombie.Zombie = 10;
+        pickUp.isPickMagicItem = false;
 
     }
 }

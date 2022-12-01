@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     float turnSpeed = 1;
     [SerializeField] bool isWalking = false;
     [SerializeField] Rigidbody rb;
+    BoxCollider m_collider;
     public Transform cam;
 
     public HealthBar healthBar;
@@ -21,11 +22,19 @@ public class PlayerScript : MonoBehaviour
     private float persenHp;
 
     public static PlayerScript playerScript;
-
+    public ObjectPickUp objectPickUp;
+    public ObjectableZombie objectableZombie;
+    private float lastClick = 0;
+    float time;
+    float remainingTime;
+    bool ak = false;
+    bool ab = false;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         healthBar.MaxHealth(healthPlayer);
+        time = Time.time;
+        ab = false;
         // Debug.Log("start " + healthPlayer);
     }
 
@@ -43,7 +52,27 @@ public class PlayerScript : MonoBehaviour
         isWalking = true;
         playerMove();
 
+        m_collider = GetComponent<BoxCollider>();
+        // if (objectPickUp.isPickMagicItem == true)
+        // {
 
+        //     if (Input.GetKeyDown(KeyCode.Space))
+        //     {
+        //         m_collider.size = new Vector3(0.3f, 0.3f, 0.3f);
+        //     }
+        // }
+
+
+
+        if (ak)
+        {
+            adDunyaUpdate();
+        }
+        else if (!ab && Input.GetButton("Jump") && objectPickUp.isPickMagicItem == true && objectableZombie.isScene4 == true)
+        {
+            adDunyaStart();
+        }
+        Debug.Log(remainingTime + " " + ak);
     }
 
     void playerMove()
@@ -95,6 +124,29 @@ public class PlayerScript : MonoBehaviour
     {
         Time.timeScale = 0;
         Destroy(gameObject, 3);
+    }
+
+    void adDunyaUpdate()
+    {
+        remainingTime = time + 10f - Time.time;
+        objectPickUp.textJutsu.text = "AD Dunyaaaa";
+
+        if (remainingTime <= 0)
+        {
+            ab = true;
+            m_collider.size = new Vector3(0.1130839f, 0.2526225f, 0.08323526f);
+            ak = false;
+        }
+        else
+        {
+            m_collider.size = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+    }
+    void adDunyaStart()
+    {
+        time = Time.time;
+        ak = true;
+        objectPickUp.textJutsu.text = "";
     }
 
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Objectable Zombie Data
   m_EditorClassIdentifier: 
   isKillZombie: 0
-  isScene1: 1
-  isScene2: 1
+  isScene1: 0
+  isScene2: 0
   isScene3: 0
-  isScene4: 0
-  Zombie: 10
+  isScene4: 1
+  Zombie: 0

@@ -26,5 +26,7 @@ public class TargetHit : MonoBehaviour
         objectableZombie.isKillZombie = true;
         Destroy(gameObject,10);
         objectableZombie.Zombie -= 1;
+        if(objectableZombie.isScene2 == true && objectableZombie.Zombie == 0) Mission.objek.getDataMission(true,false);
+        if(objectableZombie.isScene3 == true && objectableZombie.Zombie == 0) Mission.objek.getDataMission(true,false);
     }
 }

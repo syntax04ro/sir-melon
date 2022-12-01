@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56933ab57987a3f8af19508f5ed370b, type: 3}
   m_Name: ObjectPickUp
   m_EditorClassIdentifier: 
-  isPickedUp: 1
+  isPickedUp: 0
+  isPickMagicItem: 0
   nameObject: 
+  textJutsu: {fileID: 0}
