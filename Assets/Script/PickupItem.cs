@@ -11,8 +11,6 @@ public class PickupItem : MonoBehaviour
 
     public PlayerScript player;
     public AudioSource src;
-    public AudioClip completed;
-
     public Mission mission;
     private float radiusItem = 2.5f;
     // Start is called before the first frame update
@@ -45,7 +43,6 @@ public class PickupItem : MonoBehaviour
                 text3d.SetActive(false);
                 // Debug.Log(isPickup);
                 mission.getDataMission(true, false);
-                src.clip = completed;
                 src.Play();
             }
         }

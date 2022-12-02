@@ -9,9 +9,15 @@ public class MenuScript : MonoBehaviour
     public ObjectableZombie objectableZombie;
     public ObjectPickUp objectPickUp;
     public SwitchScene scene;
-
     public static bool isPaused = false;
-
+    private AudioSource[] allAudioSources;
+    public AudioSource src;
+    void StopAllAudio() {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach( AudioSource audioS in allAudioSources) {
+            audioS.Stop();
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -46,6 +52,7 @@ public class MenuScript : MonoBehaviour
         missionMenu.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
+        StopAllAudio();
     }
 
     public void closeMission()
@@ -53,6 +60,7 @@ public class MenuScript : MonoBehaviour
         missionMenu.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
+        src.Play();
     }
 
     public void resume()
@@ -61,6 +69,7 @@ public class MenuScript : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
+        src.Play();
     }
 
     public void pause()
@@ -68,6 +77,7 @@ public class MenuScript : MonoBehaviour
         pauseMenu.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
+        StopAllAudio();
     }
 
     public void restart()

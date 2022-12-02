@@ -11,8 +11,11 @@ public class BossScript : MonoBehaviour
     public Animator Anim;
     public HealthBoss healthBar;
     public ObjectableZombie objectableZombie;
+    public AudioSource Roar;
+    public AudioSource Growl;
     void Start() {
         healthBar.MaxHealth(targetHealth);
+        Growl.Play();
     }
     public void TakeDamage(float amount)
     {
@@ -21,6 +24,7 @@ public class BossScript : MonoBehaviour
         if(targetHealth <= 325f)
         {
             Anim.SetTrigger("Roar");
+            Roar.Play();
             AttackBossScript.damageZombie = 50f;
         }
         if(targetHealth <=162.5f)

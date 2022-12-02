@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class Mission : MonoBehaviour
 {
     public Text mission1;
-
-
     public static Mission objek;
     public ObjectableZombie objectableZombie;
     // Start is called before the first frame update
@@ -15,10 +13,8 @@ public class Mission : MonoBehaviour
     {
         objek = this;
     }
-
     public void getDataMission(bool data1, bool data2)
     {
-
         if (objectableZombie.isScene1 == true)
         {
             if (data1 == true)
@@ -75,8 +71,5 @@ public class Mission : MonoBehaviour
         {
             return;
         }
-
-
     }
-
 }

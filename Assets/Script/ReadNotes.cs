@@ -7,12 +7,11 @@ public class ReadNotes : MonoBehaviour
 {
 
 
-    public Image _noteImage;
+    public GameObject _noteImage;
     public GameObject noteUi;
 
     bool isRead = false;
     public AudioSource src;
-    public AudioClip openBook;
 
     private void Update()
     {
@@ -23,8 +22,7 @@ public class ReadNotes : MonoBehaviour
             {
                 noteUi.SetActive(false);
                 isRead = false;
-                _noteImage.enabled = true;
-                src.clip = openBook;
+                _noteImage.SetActive(true);
                 src.Play();
             }
         }
@@ -33,7 +31,7 @@ public class ReadNotes : MonoBehaviour
     private void Start()
     {
         noteUi.SetActive(false);
-        _noteImage.enabled = false;
+        _noteImage.SetActive(false);
     }
 
 
@@ -52,7 +50,7 @@ public class ReadNotes : MonoBehaviour
         {
             noteUi.SetActive(false);
             isRead = false;
-            _noteImage.enabled = false;
+            _noteImage.SetActive(false);
         }
     }
 }

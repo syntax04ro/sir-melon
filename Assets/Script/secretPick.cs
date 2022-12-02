@@ -10,7 +10,6 @@ public class secretPick : MonoBehaviour
 
     public PlayerScript player;
     public AudioSource src;
-    public AudioClip completed;
     private float radiusItem = 2.5f;
     // Start is called before the first frame update
 
@@ -36,7 +35,6 @@ public class secretPick : MonoBehaviour
                 objectPickUp.isPickedUp = true;
                 magicItem.SetActive(false);
                 text3d.SetActive(false);
-                src.clip = completed;
                 src.Play();
             }
         }

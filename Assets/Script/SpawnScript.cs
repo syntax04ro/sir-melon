@@ -19,9 +19,9 @@ public class SpawnScript : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
     IEnumerator SpawnEnemy(){
-        while(enemyCount < 10){
+        while(enemyCount <= 10){
             GameObject NewZombie = Instantiate(Enemy[Random.Range(0,Enemy.Length)], Spawn[Random.Range(0,Spawn.Count)].position, Quaternion.identity);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
             enemyCount += 1;
         }
     }

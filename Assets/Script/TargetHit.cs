@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class TargetHit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float targetHealth = 300f;
+    public float targetHealth = 100f;
+    public AudioSource src;
     public Animator Anim;
     public ObjectableZombie objectableZombie;
+    private void Start() {
+        src.Play();
+    }
     public void TakeDamage(float amount)
     {
         targetHealth -= amount;

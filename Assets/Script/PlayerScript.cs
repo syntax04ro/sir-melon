@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     PlayerController controller;
+    public AudioSource src;
+    public AudioSource onHurt;
     public int movementSpeed;
     public Animator Anim;
     private float turnSmoothTime = 0.1f;
@@ -46,12 +48,12 @@ public class PlayerScript : MonoBehaviour
         playerScript = this;
 
     }
-
     void FixedUpdate()
     {
         Vector2 move = controller.Land.Newaction.ReadValue<Vector2>();
         isWalking = true;
         playerMove();
+        
 
         m_collider = GetComponent<BoxCollider>();
         // if (objectPickUp.isPickMagicItem == true)
@@ -80,7 +82,6 @@ public class PlayerScript : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-
         Vector3 direction = new Vector3(h, 0f, v).normalized;
 
         if (direction.magnitude >= 0.1f)
@@ -90,7 +91,7 @@ public class PlayerScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             if (Input.GetKey(KeyCode.LeftShift)) isWalking = false;
             turnSpeed = isWalking ? 0.1f : 1f;
-
+            
             Vector3 moveDirection = Quaternion.Euler(0f, tragetAngle, 0f) * Vector3.forward * turnSpeed;
             Anim.SetFloat("speed", turnSpeed);
 
@@ -101,7 +102,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
             Anim.SetFloat("speed", direction.magnitude);
-
+            src.Play();
         }
     }
 
@@ -112,7 +113,7 @@ public class PlayerScript : MonoBehaviour
         healthPlayer -= damage;
 
         healthBar.setHealth(healthPlayer);
-
+        onHurt.Play();
         if (healthPlayer == 0)
         {
             Die();
