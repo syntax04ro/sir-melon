@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 public class AutoLoadScene : MonoBehaviour
 {
     public SwitchScene scene;
+    float countDownStartValue = 0;
     public ObjectableZombie objectableZombie;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >=32)
+        Cursor.lockState = CursorLockMode.None;
+        TimeSpan spanTime = TimeSpan.FromSeconds(countDownStartValue);
+        countDownStartValue++;
+        Invoke("countDownTimer", 1.0f);
+        if (countDownStartValue >= 1400)
         {
             SceneManager.LoadScene(3);
-        }     
-        Debug.Log(Time.time);   
+        }
     }
 
     public void SceneData(int index)
