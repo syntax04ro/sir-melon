@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     private float turnSmoothVelocity;
     float turnSpeed = 1;
     [SerializeField] bool isWalking = false;
+    public GameObject dieMenu;
     [SerializeField] Rigidbody rb;
     BoxCollider m_collider;
     public Transform cam;
@@ -116,12 +117,14 @@ public class PlayerScript : MonoBehaviour
         {
             Die();
             //Open Die Menus
+            dieMenu.SetActive(true);
         }
         // Debug.Log("setelah" + healthPlayer);
     }
 
     public void Die()
     {
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
         Destroy(gameObject, 3);
     }

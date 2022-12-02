@@ -6,6 +6,9 @@ public class MenuScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject missionMenu;
+    public ObjectableZombie objectableZombie;
+    public ObjectPickUp objectPickUp;
+    public SwitchScene scene;
 
     public static bool isPaused = false;
 
@@ -57,6 +60,7 @@ public class MenuScript : MonoBehaviour
         pauseMenu.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void pause()
@@ -64,6 +68,61 @@ public class MenuScript : MonoBehaviour
         pauseMenu.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
+    }
+
+    public void restart()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 1;
+        //cek kondisi
+        if (objectableZombie.isScene1 == true)
+        {
+            objectPickUp.isPickedUp = false;
+            scene.LoadScene(1);
+        }
+        else if (objectableZombie.isScene2 == true)
+        {
+            objectableZombie.isKillZombie = false;
+            objectableZombie.isScene1 = false;
+            objectableZombie.Zombie = 10;
+            objectPickUp.isPickedUp = true;
+            scene.LoadScene(3);
+        }
+        else if (objectableZombie.isScene3 == true)
+        {
+            objectableZombie.isKillZombie = false;
+            objectableZombie.isScene2 = false;
+            objectableZombie.Zombie = 10;
+            objectPickUp.isPickedUp = true;
+            scene.LoadScene(4);
+        }
+        else if (objectableZombie.isScene4 == true)
+        {
+            objectableZombie.isKillZombie = false;
+            objectableZombie.isScene3 = false;
+            objectPickUp.isPickedUp = true;
+            objectableZombie.Zombie = 2;
+            scene.LoadScene(5);
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
+    public void mainMenu()
+    {
+        Time.timeScale = 1;
+        objectableZombie.isKillZombie = false;
+        objectableZombie.isScene3 = false;
+        objectableZombie.isScene2 = false;
+        objectableZombie.isScene1 = false;
+        objectableZombie.isScene4 = false;
+        objectPickUp.isPickedUp = false;
+        objectPickUp.isPickMagicItem = false;
+        objectableZombie.Zombie = 10;
+        scene.LoadScene(0);
     }
 
 
