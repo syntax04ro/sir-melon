@@ -127,6 +127,7 @@ public class ShootRiffle : MonoBehaviour
         {
             // Debug.Log(hit.transform.name);
             TargetHit target = hit.collider.GetComponent<TargetHit>();
+            BossScript target = hit.collider.GetComponent<BossScript>();
             // Debug.Log(target);
 
             if (target != null)
