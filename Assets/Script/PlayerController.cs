@@ -35,15 +35,51 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""run"",
+                    ""type"": ""Value"",
+                    ""id"": ""b2c497db-03ac-43cc-9d35-1252d9bffefa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""cam"",
+                    ""type"": ""Value"",
+                    ""id"": ""04d29760-71fa-44ef-a718-ff6505bfa3c4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""buka"",
+                    ""type"": ""Value"",
+                    ""id"": ""053bfda5-17cd-460f-ace9-e3a37907cbcb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ambil"",
+                    ""type"": ""Value"",
+                    ""id"": ""3f957556-0f9f-475e-bfb2-43028f7dbfaf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""a2896c36-0fd1-48e2-97c0-08220d7cdde5"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": """",
                     ""action"": ""New action"",
                     ""isComposite"": false,
@@ -103,6 +139,61 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3085976c-910f-4188-b1ff-5facd7925ac5"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5a28327-12a4-4426-9a1c-2fc80e6a7144"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25d2d965-a7d1-4874-af4e-d2b25ec25779"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""cam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""023c703c-e929-47fe-b7c1-9ae83284d238"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""buka"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3931198-46e7-4604-a070-c53703033e50"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ambil"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -112,6 +203,10 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         // Land
         m_Land = asset.FindActionMap("Land", throwIfNotFound: true);
         m_Land_Newaction = m_Land.FindAction("New action", throwIfNotFound: true);
+        m_Land_run = m_Land.FindAction("run", throwIfNotFound: true);
+        m_Land_cam = m_Land.FindAction("cam", throwIfNotFound: true);
+        m_Land_buka = m_Land.FindAction("buka", throwIfNotFound: true);
+        m_Land_ambil = m_Land.FindAction("ambil", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -172,11 +267,19 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Land;
     private ILandActions m_LandActionsCallbackInterface;
     private readonly InputAction m_Land_Newaction;
+    private readonly InputAction m_Land_run;
+    private readonly InputAction m_Land_cam;
+    private readonly InputAction m_Land_buka;
+    private readonly InputAction m_Land_ambil;
     public struct LandActions
     {
         private @PlayerController m_Wrapper;
         public LandActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Newaction => m_Wrapper.m_Land_Newaction;
+        public InputAction @run => m_Wrapper.m_Land_run;
+        public InputAction @cam => m_Wrapper.m_Land_cam;
+        public InputAction @buka => m_Wrapper.m_Land_buka;
+        public InputAction @ambil => m_Wrapper.m_Land_ambil;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -189,6 +292,18 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Newaction.started -= m_Wrapper.m_LandActionsCallbackInterface.OnNewaction;
                 @Newaction.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnNewaction;
                 @Newaction.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnNewaction;
+                @run.started -= m_Wrapper.m_LandActionsCallbackInterface.OnRun;
+                @run.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnRun;
+                @run.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnRun;
+                @cam.started -= m_Wrapper.m_LandActionsCallbackInterface.OnCam;
+                @cam.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnCam;
+                @cam.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnCam;
+                @buka.started -= m_Wrapper.m_LandActionsCallbackInterface.OnBuka;
+                @buka.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnBuka;
+                @buka.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnBuka;
+                @ambil.started -= m_Wrapper.m_LandActionsCallbackInterface.OnAmbil;
+                @ambil.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnAmbil;
+                @ambil.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnAmbil;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -196,6 +311,18 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Newaction.started += instance.OnNewaction;
                 @Newaction.performed += instance.OnNewaction;
                 @Newaction.canceled += instance.OnNewaction;
+                @run.started += instance.OnRun;
+                @run.performed += instance.OnRun;
+                @run.canceled += instance.OnRun;
+                @cam.started += instance.OnCam;
+                @cam.performed += instance.OnCam;
+                @cam.canceled += instance.OnCam;
+                @buka.started += instance.OnBuka;
+                @buka.performed += instance.OnBuka;
+                @buka.canceled += instance.OnBuka;
+                @ambil.started += instance.OnAmbil;
+                @ambil.performed += instance.OnAmbil;
+                @ambil.canceled += instance.OnAmbil;
             }
         }
     }
@@ -203,5 +330,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     public interface ILandActions
     {
         void OnNewaction(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
+        void OnCam(InputAction.CallbackContext context);
+        void OnBuka(InputAction.CallbackContext context);
+        void OnAmbil(InputAction.CallbackContext context);
     }
 }

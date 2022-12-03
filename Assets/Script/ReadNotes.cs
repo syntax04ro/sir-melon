@@ -9,15 +9,20 @@ public class ReadNotes : MonoBehaviour
 
     public GameObject _noteImage;
     public GameObject noteUi;
-
+    PlayerController controller;
+    bool openpress;
     bool isRead = false;
     public AudioSource src;
-
+    void Awake()
+    {
+        controller = new PlayerController();
+        controller.Enable();
+        controller.Land.buka.performed += ctx => openpress = ctx.ReadValueAsButton();
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || openpress)
         {
-            Debug.Log(isRead);
             if (isRead == true)
             {
                 noteUi.SetActive(false);

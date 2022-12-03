@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuScript : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class MenuScript : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start"))
         {
             if (isPaused)
             {
@@ -33,7 +34,7 @@ public class MenuScript : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-        else if (Input.GetKeyDown("tab"))
+        else if (Input.GetKeyDown("tab") || Input.GetButtonDown("R1"))
         {
             if (isPaused)
             {

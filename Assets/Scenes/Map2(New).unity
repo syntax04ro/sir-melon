@@ -10868,6 +10868,7 @@ GameObject:
   - component: {fileID: 6819943235039226576}
   - component: {fileID: 6819943235039226577}
   - component: {fileID: 6819943235039226583}
+  - component: {fileID: 6819943235039226579}
   m_Layer: 0
   m_Name: ThirdPersonCineMachine
   m_TagString: Untagged
@@ -10875,6 +10876,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6819943235039226579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819943235039226578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: 8966458847477291897, guid: 402a1a2fc4e90f63092d82ac4505dbff, type: 3}
+  ZAxis: {fileID: 8966458847477291897, guid: 402a1a2fc4e90f63092d82ac4505dbff, type: 3}
 --- !u!114 &6819943235039226583
 MonoBehaviour:
   m_ObjectHideFlags: 0

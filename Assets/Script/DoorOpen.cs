@@ -6,13 +6,19 @@ public class DoorOpen : MonoBehaviour
 {
     [SerializeField]
     GameObject door;
-
+    PlayerController controller;
     bool isOpen = false;
+    bool openpress;
     public GameObject noteUi;
-
+    void Awake()
+    {
+        controller = new PlayerController();
+        controller.Enable();
+        controller.Land.buka.performed += ctx => openpress = ctx.ReadValueAsButton();
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || openpress)
         {
             if (isOpen == true)
             {
@@ -24,8 +30,6 @@ public class DoorOpen : MonoBehaviour
     }
     private void Start()
     {
-
-
         isOpen = false;
         noteUi.SetActive(false);
         door.transform.position = new Vector3(6.159f, 1.967f, -1.211f);

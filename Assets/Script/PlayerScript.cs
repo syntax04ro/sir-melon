@@ -32,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     float remainingTime;
     bool ak = false;
     bool ab = false;
+    bool runPressed;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -46,7 +47,7 @@ public class PlayerScript : MonoBehaviour
         controller = new PlayerController();
         controller.Enable();
         playerScript = this;
-
+        controller.Land.run.performed += ctx => runPressed = ctx.ReadValueAsButton();
     }
     void FixedUpdate()
     {
@@ -89,7 +90,7 @@ public class PlayerScript : MonoBehaviour
             float tragetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, tragetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            if (Input.GetKey(KeyCode.LeftShift)) isWalking = false;
+            if (Input.GetKey(KeyCode.LeftShift) || runPressed) isWalking = false;
             turnSpeed = isWalking ? 0.1f : 1f;
             
             Vector3 moveDirection = Quaternion.Euler(0f, tragetAngle, 0f) * Vector3.forward * turnSpeed;

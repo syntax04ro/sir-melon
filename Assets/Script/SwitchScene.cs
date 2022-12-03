@@ -17,7 +17,15 @@ public class SwitchScene : MonoBehaviour
     public ObjectableZombie objectableZombie;
 
     bool isArea = false;
+    PlayerController controller;
+    bool openpress;
 
+    void Awake()
+    {
+        controller = new PlayerController();
+        controller.Enable();
+        controller.Land.buka.performed += ctx => openpress = ctx.ReadValueAsButton();
+    }
 
     // Update is called once per frame
     void Start()
@@ -27,7 +35,7 @@ public class SwitchScene : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || openpress)
         {
             if (isArea == true)
             {

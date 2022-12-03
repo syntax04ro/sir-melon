@@ -8,7 +8,8 @@ public class PickupItem : MonoBehaviour
     public GameObject tasbih;
     public GameObject magicItem;
     public GameObject text3d;
-
+    PlayerController controller;
+    bool pickup;
     public PlayerScript player;
     public AudioSource src;
     public Mission mission;
@@ -19,6 +20,9 @@ public class PickupItem : MonoBehaviour
     public ObjectableZombie objectableZombie;
     private void Awake()
     {
+        controller = new PlayerController();
+        controller.Enable();
+        controller.Land.ambil.performed += ctx => pickup = ctx.ReadValueAsButton();
         tasbih.SetActive(false);
     }
     private void Start()
@@ -34,7 +38,7 @@ public class PickupItem : MonoBehaviour
         {
             text3d.SetActive(true);
 
-            if (Input.GetKeyDown("f"))
+            if (Input.GetKeyDown("f") || pickup)
             {
 
                 objectPickUp.isPickedUp = true;
